@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 10: Event Handling</title>
+  <style>
+    .red {
+      color: red;
+    }
+
+    .blue {
+      color: blue;
+    }
+
+    .green {
+      color: green;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Feature Request 1, 2 -->
+  <p class="green">Lorem ipsum dolor sit amet</p>
+  <button id="click">Click</button>
+
+  <!-- Feature Request 3 -->
+  <div id="input-text"></div>
+
+  <!-- Feature Request 4-1 -->
+  <form id="login-form">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username"><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <!-- Feature Request 4-2 -->
+  <select id="drop-down">
+    <option value="red" selected>Red</option>
+    <option value="green">Green</option>
+    <option value="blue">Blue</option>
+  </select>
+
+  <!-- Feature Request 5-1 -->
+  <ul>
+    <li>Item-1</li>
+    <li>Item-2</li>
+    <li>Item-3</li>
+    <li>Item-4</li>
+    <li>Item-5</li>
+    <li>Item-6</li>
+  </ul>
+
+  <script>
+    // Feature Request 1, 2
+    const paragraph = document.querySelector('p');
+    const clickBtn = document.getElementById('click');
+    clickBtn.addEventListener('click', () => {
+      paragraph.textContent = 'Hello World!';
+    })
+
+    paragraph.addEventListener('mouseover', () => {
+      paragraph.classList.remove('green');
+      paragraph.classList.add('blue');
+    })
+    paragraph.addEventListener('mouseout', () => {
+      paragraph.classList.remove('blue');
+      paragraph.classList.add('green');
+    })
+
+    // Feature Request 3
+    const body = document.querySelector('body');
+    const inputText = document.getElementById('input-text');
+    body.addEventListener('keydown', (event) => {
+      inputText.textContent += event.key;
+    })
+
+    // Feature Request 4-1
+    const loginForm = document.getElementById('login-form');
+    loginForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      console.log(event.target.username.value);
+      console.log(event.target.password.value);
+    })
+
+    // Feature Request 4-2
+    const dropDown = document.getElementById('drop-down');
+    body.style.backgroundColor = dropDown.value;
+    dropDown.addEventListener('change', (event) => {
+      body.style.backgroundColor = event.target.value;
+    })
+
+    // Feature Request 5-1
+    const ul = document.querySelector('ul');
+    ul.addEventListener('click', (event) => {
+      console.log(event.target.textContent);
+      event.target.remove();
+    })
+  </script>
+
+</body>
+
+</html>
