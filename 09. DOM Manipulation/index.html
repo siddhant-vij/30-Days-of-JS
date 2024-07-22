@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 9: DOM Manipulation</title>
+</head>
+
+<body>
+  <!-- Feature Request 5 -->
+  <button id="click">Click</button>
+
+  <!-- Feature Request 1 -->
+  <div id="text-content">Temp</div>
+
+  <!-- Feature Request 3 -->
+  <ul>
+    <li>Item-1</li>
+    <li>Item-2</li>
+    <li>Item-3</li>
+  </ul>
+
+  <!-- Feature Request 4 -->
+  <div id="square" style="width: 100px; height: 100px; background-color: red"></div>
+
+
+  <script>
+    // Feature Request 5
+    const clickBtn = document.getElementById('click');
+
+    // Feature Request 1
+    const textContent = document.getElementById('text-content');
+
+    // Feature Request 2
+    const newDiv = document.createElement('div');
+    newDiv.textContent = 'Hi World';
+
+    // Feature Request 3-1
+    const ul = document.querySelector('ul');
+    const li = document.createElement('li');
+    li.textContent = 'New Item';
+
+    // Feature Request 3-2
+    const firstLi = document.querySelectorAll('li')[0];
+
+    // Feature Request 4
+    const square = document.getElementById('square');
+
+    clickBtn.addEventListener('click', () => {
+      // Feature Request 1
+      textContent.textContent = 'Hello World';
+
+      // Feature Request 2
+      document.body.appendChild(newDiv);
+
+      // Feature Request 3-1
+      ul.appendChild(li);
+
+      // Feature Request 3-2
+      ul.removeChild(firstLi);
+
+      // Feature Request 4
+      square.style.backgroundColor = 'blue';
+    });
+  </script>
+</body>
+
+</html>
