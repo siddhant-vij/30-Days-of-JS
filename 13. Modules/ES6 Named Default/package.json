@@ -1,0 +1,14 @@
+{
+  "name": "es6-named-default",
+  "version": "1.0.0",
+  "main": "usage.js",
+  "type": "module",
+  "scripts": {
+    "start": "node usage.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
