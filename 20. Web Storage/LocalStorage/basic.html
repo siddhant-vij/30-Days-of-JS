@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic LocalStorage</title>
+</head>
+
+<body>
+
+  <script>
+    // Save a string value to LocalStorage and retrieve it
+    localStorage.setItem('name', 'John');
+    const name = localStorage.getItem('name');
+    console.log(name);
+
+    localStorage.age = 30;
+    console.log(typeof localStorage.age); // string
+    console.log(`Test for Integer Value: ${localStorage.age + 5}`);
+    console.log(`Test for Integer Value: ${Number(localStorage.age) + 5}`);
+
+
+    // Save an object to LocalStorage and retrieve it
+    const book = {
+      title: 'The Great Gatsby',
+      author: 'F. Scott Fitzgerald',
+      year: 1925
+    };
+
+    localStorage.setItem('book', JSON.stringify(book));
+    const storedBook = JSON.parse(localStorage.getItem('book'));
+    console.log(typeof storedBook); // object
+    console.log(storedBook);
+  </script>
+
+</body>
+
+</html>
+
+<!--
+  Check LocalStorage and SessionStorage with Chrome DevTools
+  Application -> Storage -> LocalStorage/SessionStorage
+-->

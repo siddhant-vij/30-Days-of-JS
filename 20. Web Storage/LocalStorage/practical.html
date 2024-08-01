@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practical LocalStorage</title>
+  <style>
+    .hidden {
+      display: none;
+    }
+
+    .visible {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <form id="userDetails" class="visible">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username"><br>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email"><br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <div id="userDetailsResults" class="hidden">
+    <p>Username: <span id="usernameResult"></span></p>
+    <p>Email: <span id="emailResult"></span></p>
+    <button id="goBack">Go Back</button>
+  </div>
+
+  <script>
+    const userDetails = document.getElementById('userDetails');
+    const userDetailsResults = document.getElementById('userDetailsResults');
+
+    userDetails.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(userDetails);
+      localStorage.setItem('username', formData.get('username'));
+      localStorage.setItem('email', formData.get('email'));
+
+      userDetails.classList.remove('visible');
+      userDetails.classList.add('hidden');
+
+      userDetails.reset();
+
+      userDetailsResults.classList.remove('hidden');
+      userDetailsResults.classList.add('visible');
+
+      const username = localStorage.getItem('username');
+      const email = localStorage.getItem('email');
+      document.getElementById('usernameResult').innerText = username;
+      document.getElementById('emailResult').innerText = email;
+    });
+
+    const goBack = document.getElementById('goBack');
+    goBack.addEventListener('click', () => {
+      userDetails.classList.remove('hidden');
+      userDetails.classList.add('visible');
+      userDetailsResults.classList.remove('visible');
+      userDetailsResults.classList.add('hidden');
+
+      localStorage.removeItem('username');
+      localStorage.removeItem('email');
+    });
+
+  </script>
+
+</body>
+
+</html>
